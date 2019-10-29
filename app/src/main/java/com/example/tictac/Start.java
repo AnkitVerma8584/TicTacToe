@@ -28,7 +28,7 @@ public class Start extends AppCompatActivity {
                 pl2=p2.getText().toString().trim();
                 if(pl1.equals("")||pl2.equals(""))
                 {
-                    Toast.makeText(getApplicationContext(),"Enter Player names",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Enter Player names ",Toast.LENGTH_LONG).show();
                 }
                 else
                 {
