@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -73,19 +74,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }else return;
         if(Whowin().equals("X"))
         {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    reset();
+
+                }
+            },500);
             Toast.makeText(getApplicationContext(),player1name+ " wins",Toast.LENGTH_LONG).show();
-            reset();
             change();
             pl1++;
             String a=p1.getText().toString();
             a=a.substring(0,a.indexOf(':'))+": "+pl1;
             p1.setText(a);
 
+
         }
         if(Whowin().equals("O"))
         {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    reset();
+                }
+            },500);
             Toast.makeText(getApplicationContext(),player2name+" wins",Toast.LENGTH_LONG).show();
-            reset();
+
             change();
             pl2++;
             String a=p2.getText().toString();
