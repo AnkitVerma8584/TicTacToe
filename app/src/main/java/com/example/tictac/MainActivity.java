@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -50,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 p2.setText(p2name);
                 pl2=0;
                 c=1;
+                p1turn=true;
+                p2turn=false;
             }
         });
     }
@@ -72,9 +75,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             round++;
         }else return;
         if(Whowin().equals("X"))
-        {
-            Toast.makeText(getApplicationContext(),player1name+ " wins",Toast.LENGTH_LONG).show();
-            reset();
+        {    Toast.makeText(getApplicationContext(),player1name+ " wins",Toast.LENGTH_LONG).show();
+            new Handler().postDelayed(new Runnable()
+            {
+            @Override
+            public void run() {
+                reset();
+            }
+            },1500);
+
             change();
             pl1++;
             String a=p1.getText().toString();
@@ -85,7 +94,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(Whowin().equals("O"))
         {
             Toast.makeText(getApplicationContext(),player2name+" wins",Toast.LENGTH_LONG).show();
-            reset();
+            new Handler().postDelayed(new Runnable()
+            {
+                @Override
+                public void run() {
+                    reset();
+                }
+            },1500);
             change();
             pl2++;
             String a=p2.getText().toString();
@@ -96,7 +111,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(round==9&&Whowin().equals("No"))
         {
             Toast.makeText(getApplicationContext(),"DRAW",Toast.LENGTH_LONG).show();
-            reset();
+
+            new Handler().postDelayed(new Runnable()
+            {
+                @Override
+                public void run() {
+                    reset();
+                }
+            },1500);
+            change();
         }
     }
 
@@ -105,8 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             for (j = 0; j < 3; j++)
                 btn[i][j].setText("");
         }
-        p1turn=true;
-        p2turn=false;
+
         round=0;
     }
 
@@ -136,7 +158,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onBackPressed() {
         AlertDialog.Builder alt=new AlertDialog.Builder(this);
-        alt.setTitle("Alet!")
+        alt.setTitle("Alert!")
                 .setCancelable(false)
                 .setMessage("Are you sure you wanna quit")
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
