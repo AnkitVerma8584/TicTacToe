@@ -75,32 +75,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             round++;
         }else return;
         if(Whowin().equals("X"))
-        {    Toast.makeText(getApplicationContext(),player1name+ " wins",Toast.LENGTH_LONG).show();
-            new Handler().postDelayed(new Runnable()
-            {
-            @Override
-            public void run() {
-                reset();
-            }
-            },1500);
+        {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    reset();
 
+                }
+            },500);
+            Toast.makeText(getApplicationContext(),player1name+ " wins",Toast.LENGTH_LONG).show();
             change();
             pl1++;
             String a=p1.getText().toString();
             a=a.substring(0,a.indexOf(':'))+": "+pl1;
             p1.setText(a);
 
+
+        
+
+
         }
         if(Whowin().equals("O"))
         {
-            Toast.makeText(getApplicationContext(),player2name+" wins",Toast.LENGTH_LONG).show();
-            new Handler().postDelayed(new Runnable()
-            {
+            new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     reset();
                 }
-            },1500);
+            },500);
+            Toast.makeText(getApplicationContext(),player2name+" wins",Toast.LENGTH_LONG).show();
+
             change();
             pl2++;
             String a=p2.getText().toString();
