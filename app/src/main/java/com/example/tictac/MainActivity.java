@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     reset();
 
                 }
-            },500);
+            },1500);
             Toast.makeText(getApplicationContext(),player1name+ " wins",Toast.LENGTH_LONG).show();
             change();
             pl1++;
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 public void run() {
                     reset();
                 }
-            },500);
+            },1500);
             Toast.makeText(getApplicationContext(),player2name+" wins",Toast.LENGTH_LONG).show();
 
             change();
