@@ -11,8 +11,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    Button btn[][]=new Button[3][3];
+    Button[][] btn =new Button[3][3];
     Button rst;
     TextView p1,p2;
     boolean p1turn=true,p2turn;
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rst=findViewById(R.id.reset);
         p1=findViewById(R.id.p1);
         p2=findViewById(R.id.p2);
-        player1name=getIntent().getExtras().getString("Player1");
+        player1name= Objects.requireNonNull(getIntent().getExtras()).getString("Player1");
         player2name=getIntent().getExtras().getString("Player2");
         p1name=player1name+" : 0";
         p2name=player2name+" : 0";
@@ -138,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private String Whowin() {
         int i,j;
-        String ch[][]=new String[3][3];
+        String[][] ch =new String[3][3];
         for(i=0;i<3;i++) {
             for (j = 0; j < 3; j++)
                 ch[i][j] = btn[i][j].getText().toString();
@@ -157,7 +159,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return ch[1][1];
         return "No";
     }
-    boolean f=false;
 
     @Override
     public void onBackPressed() {
